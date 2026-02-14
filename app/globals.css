@@ -1,26 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lexend:wght@100..900&family=Special+Gothic+Expanded+One&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #FAF3E1;
-  --foreground: #222222;
+  /* Color Scheme - Warm Theme */
+  --color-primary: #FAF3E1;
+  --color-secondary: #F5E7C6;
+  --color-accent: #FF6D1F;
+  --color-dark: #222222;
+  --color-white: #FFFFFF;
+
+  /* Semantic Colors */
+  --background: var(--color-primary);
+  --foreground: var(--color-dark);
+
+  /* Status Colors */
+  --status-done: #10b981;
+  --status-in-progress: #f59e0b;
+  --status-locked: #9ca3af;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lexend', sans-serif;
+  margin: 0;
+  padding: 0;
 }

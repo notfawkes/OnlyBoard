@@ -1,10 +1,20 @@
-export default function Home() {
+// app/page.tsx
+import { Fjalla_One } from "next/font/google";
+import styles from "./page.module.css";
+
+const lexend = Fjalla_One({
+  subsets: ["latin"],
+  weight: ["400"], // bold for big text
+});
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Welcome to OnBoard!</h1>
-      <p className="mt-4 text-lg text-gray-600">
-        Your one-stop solution for seamless onboarding.
-      </p>
+    <main className={styles.container}>
+      <h1 className={`${styles.title} ${lexend.className}`}>
+        Students onboard
+      </h1>
+
+      <div className={styles.bgImage} />
     </main>
   );
 }

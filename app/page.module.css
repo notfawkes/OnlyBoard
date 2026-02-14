@@ -1,0 +1,32 @@
+.container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* TEXT (behind image) */
+.title {
+    position: absolute;
+    bottom: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* IMAGE (above text) */
+.bgImage {
+    position: absolute;
+    inset: 0;
+    background-image: url("/College.png");
+    background-repeat: no-repeat;
+    background-position: center 50%;
+    background-size: contain;
+
+    z-index: 10;
+    pointer-events: none;
+}
