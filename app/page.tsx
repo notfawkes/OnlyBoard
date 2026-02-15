@@ -1,31 +1,61 @@
-// app/page.tsx
-import { Fjalla_One } from "next/font/google";
-import Link from "next/link";
-import styles from "./page.module.css";
+'use client';
 
-const lexend = Fjalla_One({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import LandingPage from './components/LandingPage';
 
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <main className={styles.container}>
-      <h1 className={`${styles.title} ${lexend.className}`}>
-        Students onboard
-      </h1>
+    <div className="page-root">
+      {/* Shared logo — animates from center to top-left */}
+      <motion.img
+        src="/logo/logo_dark_full.png"
+        alt="OnBoard"
+        className={loading ? 'logo-loading' : 'logo-nav'}
+        layout
+        transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] as const }}
+      />
 
-      <div className={styles.bgImage} />
+      {/* Loading overlay */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            key="loader"
+            className="loading-overlay"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+          >
+            <div className="loading-bar-container">
+              <motion.div
+                className="loading-bar-fill"
+                initial={{ width: '0%' }}
+                animate={{ width: '100%' }}
+                transition={{
+                  duration: 2.5,
+                  ease: [0.22, 1, 0.36, 1] as const,
+                }}
+                onAnimationComplete={() => setLoading(false)}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Get Started CTA */}
-      <div className={styles.cta}>
-        <Link
-          href="/login"
-          className={styles.ctaButton}
-        >
-          Get Started
-        </Link>
-      </div>
-    </main>
+      {/* Landing content */}
+      <AnimatePresence>
+        {!loading && (
+          <motion.div
+            key="landing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <LandingPage />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
