@@ -74,6 +74,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    z-index: 1;
 }
 
 /* Corner accents */
@@ -527,4 +528,28 @@
     .loading-bar-container {
         width: 180px;
     }
+}
+
+/* ========================================================
+   METEOR ANIMATION
+   ======================================================== */
+
+@keyframes meteor {
+    0% {
+        transform: rotate(var(--angle)) translateX(0);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(var(--angle)) translateX(-2000px);
+        opacity: 0;
+    }
+}
+
+.animate-meteor {
+    animation: meteor 5s linear infinite;
 }

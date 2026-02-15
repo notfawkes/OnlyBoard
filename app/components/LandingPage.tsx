@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Fjalla_One } from 'next/font/google';
 import Link from 'next/link';
 import { DockIcon, VerifiedIcon } from 'lucide-react';
+import { Meteors } from './ui/meteors';
 const fjalla = Fjalla_One({
     subsets: ['latin'],
     weight: ['400'],
@@ -48,6 +49,11 @@ export default function LandingPage() {
             {/* Decorative corner accents */}
             <motion.div className="landing-corner landing-corner-tl" variants={fadeUp} />
             <motion.div className="landing-corner landing-corner-br" variants={fadeUp} />
+
+            {/* Background Meteors */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden z-[-1]">
+                <Meteors number={60} minDuration={10} maxDuration={25} />
+            </div>
 
             {/* Navigation bar — logo space reserved for shared animated logo from page.tsx */}
             <motion.nav className="landing-nav" variants={fadeUp}>
