@@ -1,4 +1,5 @@
 import { Notification } from '../types/dashboard';
+import Icon from './ui/Icon';
 
 interface NotificationsPanelProps {
     notifications: Notification[];
@@ -8,13 +9,13 @@ export default function NotificationsPanel({ notifications }: NotificationsPanel
     const getNotificationIcon = (type: Notification['type']) => {
         switch (type) {
             case 'success':
-                return '✓';
+                return <Icon name="check" size={12} color="white" />;
             case 'warning':
-                return '⚠';
+                return <Icon name="warning" size={12} color="white" />;
             case 'info':
-                return 'ℹ';
+                return <Icon name="info" size={12} color="white" />;
             default:
-                return 'ℹ';
+                return <Icon name="info" size={12} color="white" />;
         }
     };
 

@@ -30,3 +30,38 @@
     z-index: 10;
     pointer-events: none;
 }
+
+/* CTA Button */
+.cta {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 48px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-dark);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px var(--color-dark);
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px var(--color-dark);
+}
+
+.ctaButton:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px var(--color-dark);
+}

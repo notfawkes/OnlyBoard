@@ -2,6 +2,7 @@
 
 import { Step } from '../types/dashboard';
 import { HoverButton } from './HoverButton';
+import Icon from './ui/Icon';
 
 interface TextProgressStepperProps {
     steps: Step[];
@@ -47,7 +48,7 @@ export default function TextProgressStepper({ steps }: TextProgressStepperProps)
                             className="text-2xl font-bold"
                             style={{ color: 'var(--color-dark)' }}
                         >
-                            →
+                            <Icon name="arrow-right" size={24} color="var(--color-dark)" />
                         </span>
                     )}
                 </div>

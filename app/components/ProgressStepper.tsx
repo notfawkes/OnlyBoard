@@ -1,4 +1,5 @@
 import { Step } from '../types/dashboard';
+import Icon from './ui/Icon';
 
 interface ProgressStepperProps {
     steps: Step[];
@@ -27,7 +28,7 @@ export default function ProgressStepper({ steps }: ProgressStepperProps) {
                             className="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-sm transition-all duration-300"
                             style={{ backgroundColor: getStatusColor(step.status) }}
                         >
-                            {step.status === 'done' ? '✓' : index + 1}
+                            {step.status === 'done' ? <Icon name="check" size={18} color="white" /> : index + 1}
                         </div>
                         <span className="mt-2 text-sm font-medium" style={{ color: 'var(--color-dark)' }}>
                             {step.label}
