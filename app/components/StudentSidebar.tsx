@@ -80,10 +80,10 @@ export default function StudentSidebar({ children }: { children: React.ReactNode
                 }}
             >
                 {/* Logo */}
-                <div className="p-6 border-b-2" style={{ borderColor: 'var(--color-dark)' }}>
+                <div className="p-6">
                     <Link href="/dashboard">
                         <Image
-                            src="/logo/logo_light_full.png"
+                            src="/logo/logo_dark_full.png"
                             alt="OnBoard Logo"
                             width={180}
                             height={50}
