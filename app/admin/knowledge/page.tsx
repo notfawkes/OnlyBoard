@@ -12,10 +12,7 @@ import { useApp } from '../../context/AppContext';
 
 const sidebarItems = [
     { id: 'students', label: 'Students', icon: 'users' as IconName },
-    { id: 'documents', label: 'Documents', icon: 'document' as IconName },
-    { id: 'fees', label: 'Fees', icon: 'money' as IconName },
-    { id: 'knowledge', label: 'Knowledge Base', icon: 'book' as IconName },
-    { id: 'notifications', label: 'Notifications', icon: 'bell' as IconName },
+    { id: 'knowledge', label: 'Knowledge Base', icon: 'book' as IconName }
 ];
 
 const categories = ['Documents', 'Fees', 'LMS', 'General'];

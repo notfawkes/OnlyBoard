@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { AdminStudent, AdminStudentStatus } from '../types/types';
 import { adminStudents as initialStudents } from '../data/mockData';
+import TutorialAlert from '../components/TutorialAlert';
 
 // ── Types ──────────────────────────────────────────────────────────
 interface CurrentUser {
@@ -20,6 +21,8 @@ interface AppContextValue {
     approveStudent: (studentId: string) => void;
     rejectStudent: (studentId: string) => void;
     getCurrentStudentStage: () => AdminStudentStatus | null;
+    showTutorial: boolean;
+    dismissTutorial: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -70,6 +73,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const [students, setStudents] = useState<AdminStudent[]>(initialStudents);
     const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
     const [hydrated, setHydrated] = useState(false);
+    const [showTutorial, setShowTutorial] = useState(false);
 
     // Hydrate on mount
     useEffect(() => {
@@ -125,6 +129,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
                 password === ADMIN_CREDENTIALS.password
             ) {
                 setCurrentUser({ id: 'admin', role: 'admin', name: 'Admin', uid: 'admin' });
+                setShowTutorial(true);
                 return null;
             }
             return 'Invalid admin credentials';
@@ -144,6 +149,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         if (password !== expectedPassword) return 'Incorrect password';
 
         setCurrentUser({ id: student.id, role: 'student', name: student.name, uid: student.uid });
+        setShowTutorial(true);
         return null;
     }, []);
 
@@ -177,6 +183,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         return student?.stage || null;
     }, [currentUser, students]);
 
+    const dismissTutorial = useCallback(() => {
+        setShowTutorial(false);
+    }, []);
+
     return (
         <AppContext.Provider value={{
             students,
@@ -186,8 +196,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             approveStudent,
             rejectStudent,
             getCurrentStudentStage,
+            showTutorial,
+            dismissTutorial,
         }}>
             {children}
+            {currentUser && showTutorial && <TutorialAlert />}
         </AppContext.Provider>
     );
 }
