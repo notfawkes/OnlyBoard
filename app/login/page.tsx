@@ -208,7 +208,7 @@ export default function LoginPage() {
                     >
                         <Icon name="info" size={12} /> {isAdmin
                             ? 'Use admin / admin to login'
-                            : 'Use your name or UID (e.g. "Bala Sudalaimuthu" or "24AIMLA0628") with your first name as password'}
+                            : 'Use username: Bala Sudalaimuthu /password: Bala to login'}
                     </div>
 
                     {/* Identifier */}
